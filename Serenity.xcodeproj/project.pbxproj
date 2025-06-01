@@ -1,0 +1,637 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		90C55BAE2DE4F1960053A5FF /* rain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA82DE4F1960053A5FF /* rain.wav */; };
+		90C55BAF2DE4F1960053A5FF /* wind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BAD2DE4F1960053A5FF /* wind.mp3 */; };
+		90C55BB02DE4F1960053A5FF /* stream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BAA2DE4F1960053A5FF /* stream.mp3 */; };
+		90C55BB12DE4F1960053A5FF /* storm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA92DE4F1960053A5FF /* storm.mp3 */; };
+		90C55BB22DE4F1960053A5FF /* waves.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BAB2DE4F1960053A5FF /* waves.mp3 */; };
+		90C55BB32DE4F1960053A5FF /* birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA02DE4F1960053A5FF /* birds.mp3 */; };
+		90C55BB42DE4F1960053A5FF /* pink-noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA72DE4F1960053A5FF /* pink-noise.mp3 */; };
+		90C55BB52DE4F1960053A5FF /* boat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA12DE4F1960053A5FF /* boat.mp3 */; };
+		90C55BB62DE4F1960053A5FF /* city.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA32DE4F1960053A5FF /* city.mp3 */; };
+		90C55BB72DE4F1960053A5FF /* fireplace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA42DE4F1960053A5FF /* fireplace.mp3 */; };
+		90C55BB82DE4F1960053A5FF /* white-noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BAC2DE4F1960053A5FF /* white-noise.mp3 */; };
+		90C55BB92DE4F1960053A5FF /* hair-dryer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA62DE4F1960053A5FF /* hair-dryer.mp3 */; };
+		90C55BBA2DE4F1960053A5FF /* brown-noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA22DE4F1960053A5FF /* brown-noise.mp3 */; };
+		90C55BBB2DE4F1960053A5FF /* fireplace-old.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA52DE4F1960053A5FF /* fireplace-old.mp3 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		90C55B512DE4EFB30053A5FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90C55B3B2DE4EFB20053A5FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90C55B422DE4EFB20053A5FF;
+			remoteInfo = Serenity;
+		};
+		90C55B5B2DE4EFB30053A5FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90C55B3B2DE4EFB20053A5FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90C55B422DE4EFB20053A5FF;
+			remoteInfo = Serenity;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		90C55B432DE4EFB20053A5FF /* Serenity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serenity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		90C55B502DE4EFB30053A5FF /* SerenityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerenityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90C55B5A2DE4EFB30053A5FF /* SerenityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerenityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90C55BA02DE4F1960053A5FF /* birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = birds.mp3; sourceTree = "<group>"; };
+		90C55BA12DE4F1960053A5FF /* boat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boat.mp3; sourceTree = "<group>"; };
+		90C55BA22DE4F1960053A5FF /* brown-noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "brown-noise.mp3"; sourceTree = "<group>"; };
+		90C55BA32DE4F1960053A5FF /* city.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = city.mp3; sourceTree = "<group>"; };
+		90C55BA42DE4F1960053A5FF /* fireplace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fireplace.mp3; sourceTree = "<group>"; };
+		90C55BA52DE4F1960053A5FF /* fireplace-old.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "fireplace-old.mp3"; sourceTree = "<group>"; };
+		90C55BA62DE4F1960053A5FF /* hair-dryer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "hair-dryer.mp3"; sourceTree = "<group>"; };
+		90C55BA72DE4F1960053A5FF /* pink-noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "pink-noise.mp3"; sourceTree = "<group>"; };
+		90C55BA82DE4F1960053A5FF /* rain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rain.wav; sourceTree = "<group>"; };
+		90C55BA92DE4F1960053A5FF /* storm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = storm.mp3; sourceTree = "<group>"; };
+		90C55BAA2DE4F1960053A5FF /* stream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stream.mp3; sourceTree = "<group>"; };
+		90C55BAB2DE4F1960053A5FF /* waves.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waves.mp3; sourceTree = "<group>"; };
+		90C55BAC2DE4F1960053A5FF /* white-noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "white-noise.mp3"; sourceTree = "<group>"; };
+		90C55BAD2DE4F1960053A5FF /* wind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wind.mp3; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		90C55BBD2DE4FF0F0053A5FF /* Exceptions for "Serenity" folder in "Serenity" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 90C55B422DE4EFB20053A5FF /* Serenity */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		90C55B532DE4EFB30053A5FF /* SerenityTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SerenityTests;
+			sourceTree = "<group>";
+		};
+		90C55B5D2DE4EFB30053A5FF /* SerenityUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SerenityUITests;
+			sourceTree = "<group>";
+		};
+		90C55B972DE4F1540053A5FF /* Serenity */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				90C55BBD2DE4FF0F0053A5FF /* Exceptions for "Serenity" folder in "Serenity" target */,
+			);
+			path = Serenity;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		90C55B402DE4EFB20053A5FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90C55B4D2DE4EFB30053A5FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90C55B572DE4EFB30053A5FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		90C55B3A2DE4EFB20053A5FF = {
+			isa = PBXGroup;
+			children = (
+				90C55B9F2DE4F1600053A5FF /* Sounds */,
+				90C55B532DE4EFB30053A5FF /* SerenityTests */,
+				90C55B5D2DE4EFB30053A5FF /* SerenityUITests */,
+				90C55B442DE4EFB20053A5FF /* Products */,
+				90C55B972DE4F1540053A5FF /* Serenity */,
+			);
+			sourceTree = "<group>";
+		};
+		90C55B442DE4EFB20053A5FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				90C55B432DE4EFB20053A5FF /* Serenity.app */,
+				90C55B502DE4EFB30053A5FF /* SerenityTests.xctest */,
+				90C55B5A2DE4EFB30053A5FF /* SerenityUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		90C55B9F2DE4F1600053A5FF /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				90C55BA02DE4F1960053A5FF /* birds.mp3 */,
+				90C55BA12DE4F1960053A5FF /* boat.mp3 */,
+				90C55BA22DE4F1960053A5FF /* brown-noise.mp3 */,
+				90C55BA32DE4F1960053A5FF /* city.mp3 */,
+				90C55BA42DE4F1960053A5FF /* fireplace.mp3 */,
+				90C55BA52DE4F1960053A5FF /* fireplace-old.mp3 */,
+				90C55BA62DE4F1960053A5FF /* hair-dryer.mp3 */,
+				90C55BA72DE4F1960053A5FF /* pink-noise.mp3 */,
+				90C55BA82DE4F1960053A5FF /* rain.wav */,
+				90C55BA92DE4F1960053A5FF /* storm.mp3 */,
+				90C55BAA2DE4F1960053A5FF /* stream.mp3 */,
+				90C55BAB2DE4F1960053A5FF /* waves.mp3 */,
+				90C55BAC2DE4F1960053A5FF /* white-noise.mp3 */,
+				90C55BAD2DE4F1960053A5FF /* wind.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		90C55B422DE4EFB20053A5FF /* Serenity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90C55B642DE4EFB30053A5FF /* Build configuration list for PBXNativeTarget "Serenity" */;
+			buildPhases = (
+				90C55B3F2DE4EFB20053A5FF /* Sources */,
+				90C55B402DE4EFB20053A5FF /* Frameworks */,
+				90C55B412DE4EFB20053A5FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				90C55B972DE4F1540053A5FF /* Serenity */,
+			);
+			name = Serenity;
+			packageProductDependencies = (
+			);
+			productName = Serenity;
+			productReference = 90C55B432DE4EFB20053A5FF /* Serenity.app */;
+			productType = "com.apple.product-type.application";
+		};
+		90C55B4F2DE4EFB30053A5FF /* SerenityTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90C55B672DE4EFB30053A5FF /* Build configuration list for PBXNativeTarget "SerenityTests" */;
+			buildPhases = (
+				90C55B4C2DE4EFB30053A5FF /* Sources */,
+				90C55B4D2DE4EFB30053A5FF /* Frameworks */,
+				90C55B4E2DE4EFB30053A5FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90C55B522DE4EFB30053A5FF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				90C55B532DE4EFB30053A5FF /* SerenityTests */,
+			);
+			name = SerenityTests;
+			packageProductDependencies = (
+			);
+			productName = SerenityTests;
+			productReference = 90C55B502DE4EFB30053A5FF /* SerenityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		90C55B592DE4EFB30053A5FF /* SerenityUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90C55B6A2DE4EFB30053A5FF /* Build configuration list for PBXNativeTarget "SerenityUITests" */;
+			buildPhases = (
+				90C55B562DE4EFB30053A5FF /* Sources */,
+				90C55B572DE4EFB30053A5FF /* Frameworks */,
+				90C55B582DE4EFB30053A5FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90C55B5C2DE4EFB30053A5FF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				90C55B5D2DE4EFB30053A5FF /* SerenityUITests */,
+			);
+			name = SerenityUITests;
+			packageProductDependencies = (
+			);
+			productName = SerenityUITests;
+			productReference = 90C55B5A2DE4EFB30053A5FF /* SerenityUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		90C55B3B2DE4EFB20053A5FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					90C55B422DE4EFB20053A5FF = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					90C55B4F2DE4EFB30053A5FF = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 90C55B422DE4EFB20053A5FF;
+					};
+					90C55B592DE4EFB30053A5FF = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 90C55B422DE4EFB20053A5FF;
+					};
+				};
+			};
+			buildConfigurationList = 90C55B3E2DE4EFB20053A5FF /* Build configuration list for PBXProject "Serenity" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 90C55B3A2DE4EFB20053A5FF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 90C55B442DE4EFB20053A5FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				90C55B422DE4EFB20053A5FF /* Serenity */,
+				90C55B4F2DE4EFB30053A5FF /* SerenityTests */,
+				90C55B592DE4EFB30053A5FF /* SerenityUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		90C55B412DE4EFB20053A5FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90C55BAE2DE4F1960053A5FF /* rain.wav in Resources */,
+				90C55BAF2DE4F1960053A5FF /* wind.mp3 in Resources */,
+				90C55BB02DE4F1960053A5FF /* stream.mp3 in Resources */,
+				90C55BB12DE4F1960053A5FF /* storm.mp3 in Resources */,
+				90C55BB22DE4F1960053A5FF /* waves.mp3 in Resources */,
+				90C55BB32DE4F1960053A5FF /* birds.mp3 in Resources */,
+				90C55BB42DE4F1960053A5FF /* pink-noise.mp3 in Resources */,
+				90C55BB52DE4F1960053A5FF /* boat.mp3 in Resources */,
+				90C55BB62DE4F1960053A5FF /* city.mp3 in Resources */,
+				90C55BB72DE4F1960053A5FF /* fireplace.mp3 in Resources */,
+				90C55BB82DE4F1960053A5FF /* white-noise.mp3 in Resources */,
+				90C55BB92DE4F1960053A5FF /* hair-dryer.mp3 in Resources */,
+				90C55BBA2DE4F1960053A5FF /* brown-noise.mp3 in Resources */,
+				90C55BBB2DE4F1960053A5FF /* fireplace-old.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90C55B4E2DE4EFB30053A5FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90C55B582DE4EFB30053A5FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		90C55B3F2DE4EFB20053A5FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90C55B4C2DE4EFB30053A5FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90C55B562DE4EFB30053A5FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		90C55B522DE4EFB30053A5FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90C55B422DE4EFB20053A5FF /* Serenity */;
+			targetProxy = 90C55B512DE4EFB30053A5FF /* PBXContainerItemProxy */;
+		};
+		90C55B5C2DE4EFB30053A5FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90C55B422DE4EFB20053A5FF /* Serenity */;
+			targetProxy = 90C55B5B2DE4EFB30053A5FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		90C55B622DE4EFB30053A5FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		90C55B632DE4EFB30053A5FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		90C55B652DE4EFB30053A5FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Serenity/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carellice.Serenity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		90C55B662DE4EFB30053A5FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Serenity/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carellice.Serenity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		90C55B682DE4EFB30053A5FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carellice.SerenityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Serenity.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Serenity";
+			};
+			name = Debug;
+		};
+		90C55B692DE4EFB30053A5FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carellice.SerenityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Serenity.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Serenity";
+			};
+			name = Release;
+		};
+		90C55B6B2DE4EFB30053A5FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carellice.SerenityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Serenity;
+			};
+			name = Debug;
+		};
+		90C55B6C2DE4EFB30053A5FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carellice.SerenityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Serenity;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		90C55B3E2DE4EFB20053A5FF /* Build configuration list for PBXProject "Serenity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90C55B622DE4EFB30053A5FF /* Debug */,
+				90C55B632DE4EFB30053A5FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90C55B642DE4EFB30053A5FF /* Build configuration list for PBXNativeTarget "Serenity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90C55B652DE4EFB30053A5FF /* Debug */,
+				90C55B662DE4EFB30053A5FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90C55B672DE4EFB30053A5FF /* Build configuration list for PBXNativeTarget "SerenityTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90C55B682DE4EFB30053A5FF /* Debug */,
+				90C55B692DE4EFB30053A5FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90C55B6A2DE4EFB30053A5FF /* Build configuration list for PBXNativeTarget "SerenityUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90C55B6B2DE4EFB30053A5FF /* Debug */,
+				90C55B6C2DE4EFB30053A5FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 90C55B3B2DE4EFB20053A5FF /* Project object */;
+}
