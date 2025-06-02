@@ -1,6 +1,7 @@
 import Foundation
 import AVFoundation
 import Combine
+import ActivityKit
 
 class AudioManager: ObservableObject {
     @Published var activeSounds: [UUID: Bool] = [:]
@@ -10,6 +11,7 @@ class AudioManager: ObservableObject {
     
     private var audioPlayers: [UUID: AVAudioPlayer] = [:]
     private var timerCancellable: AnyCancellable?
+    private let liveActivityManager = LiveActivityManager.shared
     
     // Sound categories
     var antiSounds: [Sound] {
@@ -31,6 +33,45 @@ class AudioManager: ObservableObject {
     init() {
         setupAudioSession()
         preloadSounds()
+        
+        // Aggiungi questo observer
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleStopFromWidget),
+            name: .stopAllSoundsFromWidget,
+            object: nil
+        )
+    }
+
+    // Aggiungi questo metodo
+    @objc private func handleStopFromWidget() {
+        stopAllSounds()
+    }
+    
+    private func updateLiveActivity() {
+        // Ottieni i nomi dei suoni attivi
+        let activeSoundNames = Sound.allSounds
+            .filter { sound in
+                activeSounds[sound.id] == true
+            }
+            .map { $0.name }
+        
+        let isPlaying = !activeSoundNames.isEmpty
+        
+        print("AudioManager: Active sounds: \(activeSoundNames)")
+        
+        // Aggiungi un piccolo delay per assicurarti che l'UI sia aggiornata
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if isPlaying {
+                LiveActivityManager.shared.startOrUpdateActivity(
+                    activeSounds: activeSoundNames,
+                    isPlaying: isPlaying,
+                    timerEndTime: self.timerEndTime
+                )
+            } else {
+                LiveActivityManager.shared.stopActivity()
+            }
+        }
     }
     
     private func setupAudioSession() {
@@ -90,6 +131,9 @@ class AudioManager: ObservableObject {
                 activeSounds[sound.id] = false
             }
         }
+        
+        //Aggionra Live Avtivity
+        updateLiveActivity()
     }
     
     func stopAllSounds() {
@@ -100,6 +144,8 @@ class AudioManager: ObservableObject {
             soundVolumes[id] = 0
             activeSounds[id] = false
         }
+        // Ferma Live Activity
+        liveActivityManager.stopActivity()
     }
     
     func setTimer(minutes: Int) {
@@ -125,12 +171,18 @@ class AudioManager: ObservableObject {
                     self.timerExpired()
                 }
             }
+        
+        // Aggiorna Live Activity
+        updateLiveActivity()
     }
     
     func cancelTimer() {
         timerEndTime = nil
         timerActive = false
         timerCancellable?.cancel()
+        
+        // Aggiorna Live Activity
+        updateLiveActivity()
     }
     
     private func timerExpired() {

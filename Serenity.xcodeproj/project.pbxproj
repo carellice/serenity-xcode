@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90BB74BD2DEDAFDD00F30C28 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BB74BC2DEDAFDD00F30C28 /* WidgetKit.framework */; };
+		90BB74BF2DEDAFDD00F30C28 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BB74BE2DEDAFDD00F30C28 /* SwiftUI.framework */; };
+		90BB74CE2DEDAFDE00F30C28 /* SerenityWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 90BB74BA2DEDAFDD00F30C28 /* SerenityWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		90BB74D72DEDB04900F30C28 /* SerenityShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB74D62DEDB03A00F30C28 /* SerenityShared.swift */; };
+		90BB74D82DEDB04900F30C28 /* SerenityShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB74D62DEDB03A00F30C28 /* SerenityShared.swift */; };
 		90C55BAE2DE4F1960053A5FF /* rain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BA82DE4F1960053A5FF /* rain.wav */; };
 		90C55BAF2DE4F1960053A5FF /* wind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BAD2DE4F1960053A5FF /* wind.mp3 */; };
 		90C55BB02DE4F1960053A5FF /* stream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90C55BAA2DE4F1960053A5FF /* stream.mp3 */; };
@@ -24,6 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		90BB74CC2DEDAFDE00F30C28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90C55B3B2DE4EFB20053A5FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90BB74B92DEDAFDD00F30C28;
+			remoteInfo = SerenityWidgetExtension;
+		};
 		90C55B512DE4EFB30053A5FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 90C55B3B2DE4EFB20053A5FF /* Project object */;
@@ -40,7 +52,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		90BB74CF2DEDAFDE00F30C28 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				90BB74CE2DEDAFDE00F30C28 /* SerenityWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		90BB74BA2DEDAFDD00F30C28 /* SerenityWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SerenityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		90BB74BC2DEDAFDD00F30C28 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		90BB74BE2DEDAFDD00F30C28 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		90BB74D62DEDB03A00F30C28 /* SerenityShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerenityShared.swift; sourceTree = "<group>"; };
+		90BB74DE2DEDB1D300F30C28 /* SerenityWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SerenityWidgetExtension.entitlements; sourceTree = "<group>"; };
 		90C55B432DE4EFB20053A5FF /* Serenity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serenity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C55B502DE4EFB30053A5FF /* SerenityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerenityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C55B5A2DE4EFB30053A5FF /* SerenityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerenityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +92,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		90BB74D22DEDAFDE00F30C28 /* Exceptions for "SerenityWidget" folder in "SerenityWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 90BB74B92DEDAFDD00F30C28 /* SerenityWidgetExtension */;
+		};
+		90BB74E02DEDB20100F30C28 /* Exceptions for "Serenity" folder in "SerenityWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Sound.swift,
+			);
+			target = 90BB74B92DEDAFDD00F30C28 /* SerenityWidgetExtension */;
+		};
 		90C55BBD2DE4FF0F0053A5FF /* Exceptions for "Serenity" folder in "Serenity" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -71,6 +116,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		90BB74C02DEDAFDD00F30C28 /* SerenityWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				90BB74D22DEDAFDE00F30C28 /* Exceptions for "SerenityWidget" folder in "SerenityWidgetExtension" target */,
+			);
+			path = SerenityWidget;
+			sourceTree = "<group>";
+		};
 		90C55B532DE4EFB30053A5FF /* SerenityTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = SerenityTests;
@@ -85,6 +138,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				90C55BBD2DE4FF0F0053A5FF /* Exceptions for "Serenity" folder in "Serenity" target */,
+				90BB74E02DEDB20100F30C28 /* Exceptions for "Serenity" folder in "SerenityWidgetExtension" target */,
 			);
 			path = Serenity;
 			sourceTree = "<group>";
@@ -92,6 +146,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		90BB74B72DEDAFDD00F30C28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90BB74BF2DEDAFDD00F30C28 /* SwiftUI.framework in Frameworks */,
+				90BB74BD2DEDAFDD00F30C28 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90C55B402DE4EFB20053A5FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -116,12 +179,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90BB74BB2DEDAFDD00F30C28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				90BB74BC2DEDAFDD00F30C28 /* WidgetKit.framework */,
+				90BB74BE2DEDAFDD00F30C28 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		90BB74D52DEDB00E00F30C28 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				90BB74D62DEDB03A00F30C28 /* SerenityShared.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		90C55B3A2DE4EFB20053A5FF = {
 			isa = PBXGroup;
 			children = (
+				90BB74DE2DEDB1D300F30C28 /* SerenityWidgetExtension.entitlements */,
+				90BB74D52DEDB00E00F30C28 /* Shared */,
 				90C55B9F2DE4F1600053A5FF /* Sounds */,
 				90C55B532DE4EFB30053A5FF /* SerenityTests */,
 				90C55B5D2DE4EFB30053A5FF /* SerenityUITests */,
+				90BB74C02DEDAFDD00F30C28 /* SerenityWidget */,
+				90BB74BB2DEDAFDD00F30C28 /* Frameworks */,
 				90C55B442DE4EFB20053A5FF /* Products */,
 				90C55B972DE4F1540053A5FF /* Serenity */,
 			);
@@ -133,6 +217,7 @@
 				90C55B432DE4EFB20053A5FF /* Serenity.app */,
 				90C55B502DE4EFB30053A5FF /* SerenityTests.xctest */,
 				90C55B5A2DE4EFB30053A5FF /* SerenityUITests.xctest */,
+				90BB74BA2DEDAFDD00F30C28 /* SerenityWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,6 +246,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		90BB74B92DEDAFDD00F30C28 /* SerenityWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90BB74D32DEDAFDE00F30C28 /* Build configuration list for PBXNativeTarget "SerenityWidgetExtension" */;
+			buildPhases = (
+				90BB74B62DEDAFDD00F30C28 /* Sources */,
+				90BB74B72DEDAFDD00F30C28 /* Frameworks */,
+				90BB74B82DEDAFDD00F30C28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				90BB74C02DEDAFDD00F30C28 /* SerenityWidget */,
+			);
+			name = SerenityWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = SerenityWidgetExtension;
+			productReference = 90BB74BA2DEDAFDD00F30C28 /* SerenityWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		90C55B422DE4EFB20053A5FF /* Serenity */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90C55B642DE4EFB30053A5FF /* Build configuration list for PBXNativeTarget "Serenity" */;
@@ -168,10 +275,12 @@
 				90C55B3F2DE4EFB20053A5FF /* Sources */,
 				90C55B402DE4EFB20053A5FF /* Frameworks */,
 				90C55B412DE4EFB20053A5FF /* Resources */,
+				90BB74CF2DEDAFDE00F30C28 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				90BB74CD2DEDAFDE00F30C28 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				90C55B972DE4F1540053A5FF /* Serenity */,
@@ -236,9 +345,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					90BB74B92DEDAFDD00F30C28 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					90C55B422DE4EFB20053A5FF = {
 						CreatedOnToolsVersion = 16.3;
 					};
@@ -269,11 +381,19 @@
 				90C55B422DE4EFB20053A5FF /* Serenity */,
 				90C55B4F2DE4EFB30053A5FF /* SerenityTests */,
 				90C55B592DE4EFB30053A5FF /* SerenityUITests */,
+				90BB74B92DEDAFDD00F30C28 /* SerenityWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		90BB74B82DEDAFDD00F30C28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90C55B412DE4EFB20053A5FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,10 +432,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		90BB74B62DEDAFDD00F30C28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90BB74D82DEDB04900F30C28 /* SerenityShared.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90C55B3F2DE4EFB20053A5FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90BB74D72DEDB04900F30C28 /* SerenityShared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +465,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		90BB74CD2DEDAFDE00F30C28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90BB74B92DEDAFDD00F30C28 /* SerenityWidgetExtension */;
+			targetProxy = 90BB74CC2DEDAFDE00F30C28 /* PBXContainerItemProxy */;
+		};
 		90C55B522DE4EFB30053A5FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 90C55B422DE4EFB20053A5FF /* Serenity */;
@@ -349,6 +483,64 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		90BB74D02DEDAFDE00F30C28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SerenityWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 579CS4F45Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SerenityWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SerenityWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carellice.Serenity.SerenityWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		90BB74D12DEDAFDE00F30C28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SerenityWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 579CS4F45Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SerenityWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SerenityWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carellice.Serenity.SerenityWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		90C55B622DE4EFB30053A5FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -473,8 +665,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Serenity/Serenity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 579CS4F45Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Serenity/Info.plist;
@@ -501,8 +695,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Serenity/Serenity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 579CS4F45Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Serenity/Info.plist;
@@ -595,6 +791,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		90BB74D32DEDAFDE00F30C28 /* Build configuration list for PBXNativeTarget "SerenityWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90BB74D02DEDAFDE00F30C28 /* Debug */,
+				90BB74D12DEDAFDE00F30C28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		90C55B3E2DE4EFB20053A5FF /* Build configuration list for PBXProject "Serenity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
