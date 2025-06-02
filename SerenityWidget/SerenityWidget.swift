@@ -23,18 +23,31 @@ struct SerenityLiveActivity: Widget {
             DynamicIsland {
                 // Expanded regions
                 DynamicIslandExpandedRegion(.leading) {
-                    Label("Serenity", systemImage: "moon.zzz.fill")
-                        .font(.caption)
-                        .foregroundColor(.blue)
+                    HStack {
+                        Spacer()
+                        Label("Serenity", systemImage: "moon.zzz.fill")
+                            .font(.caption)
+                            .foregroundColor(.blue)
+                        Spacer()
+                    }
+                    .frame(maxHeight: .infinity)
                 }
                 
                 DynamicIslandExpandedRegion(.trailing) {
-                    if let endTime = context.state.timerEndTime {
-                        TimerView(endTime: endTime)
-                    } else {
-                        Text("No Timer")
-                            .font(.caption2)
-                            .foregroundColor(.gray)
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            if let endTime = context.state.timerEndTime {
+                                TimerView(endTime: endTime)
+                            } else {
+                                Text("No Timer")
+                                    .font(.caption2)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer()
+                        }
+                        Spacer()
                     }
                 }
                 
@@ -119,7 +132,8 @@ struct TimerView: View {
     
     var body: some View {
         Text(endTime, style: .timer)
-            .font(.caption2)
+            .font(.system(size: 16))
+            .fontWeight(.semibold)
             .foregroundColor(.orange)
             .monospacedDigit()
     }
