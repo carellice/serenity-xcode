@@ -5,22 +5,6 @@ extension Color {
     static let customBackground = Color("BackgroundColor")
     static let customCard = Color("CardBackground")
     
-    // Gradienti per gli slider
-    static let volumeGradient = LinearGradient(
-        gradient: Gradient(stops: [
-            .init(color: Color.green, location: 0.0),
-            .init(color: Color.yellow, location: 0.3),
-            .init(color: Color.orange, location: 0.7),
-            .init(color: Color.red, location: 1.0)
-        ]),
-        startPoint: .leading,
-        endPoint: .trailing
-    )
-    
-    // Colori dinamici che si adattano al tema
-    static let dynamicWhite = Color.primary.opacity(0.9)
-    static let dynamicGray = Color.secondary.opacity(0.6)
-    
     // Colori per le categorie di suoni
     static let antiSoundsColor = Color.purple
     static let natureColor = Color.green
@@ -31,13 +15,13 @@ extension Color {
     static func colorForCategory(_ category: SoundCategory) -> Color {
         switch category {
         case .antiSounds:
-            return .antiSoundsColor
+            return .purple
         case .nature:
-            return .natureColor
+            return .green
         case .travel:
-            return .travelColor
+            return .blue
         case .other:
-            return .otherColor
+            return .orange
         }
     }
 }

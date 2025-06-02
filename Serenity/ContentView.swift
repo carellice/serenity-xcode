@@ -14,12 +14,13 @@ struct ContentView: View {
                     .ignoresSafeArea()
                 
                 VStack(spacing: 20) {
-                    // Control Buttons
-                    HStack(spacing: 30) {
+                    // Control Buttons - Stile moderno
+                    HStack(spacing: 16) {
+                        // Stop button - intelligente
                         ControlButton(
                             icon: "stop.fill",
                             title: "Stop",
-                            isActive: false,
+                            isActive: audioManager.activeSounds.values.contains(true), // Attivo se ci sono suoni
                             action: {
                                 audioManager.stopAllSounds()
                             }
@@ -36,14 +37,17 @@ struct ContentView: View {
                         
                         ControlButton(
                             icon: isLocked ? "lock.fill" : "lock.open.fill",
-                            title: "Blocca",
+                            title: isLocked ? "Bloccato" : "Blocca",
                             isActive: isLocked,
                             action: {
-                                isLocked.toggle()
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    isLocked.toggle()
+                                }
                             }
                         )
                     }
-                    .padding(.top)
+                    .padding(.horizontal)
+                    .padding(.top, 8)
                     
                     ScrollView {
                         VStack(alignment: .leading, spacing: 25) {
@@ -97,32 +101,103 @@ struct ContentView: View {
     }
 }
 
-// Control Button Component
+// Control Button Component - Moderno
 struct ControlButton: View {
     let icon: String
     let title: String
     let isActive: Bool
     let action: () -> Void
     
+    // Colori personalizzati per ogni tipo di pulsante
+    private var buttonColor: Color {
+        switch icon {
+        case "stop.fill":
+            return .red
+        case "clock.fill":
+            return .orange
+        case "lock.fill", "lock.open.fill":
+            return .purple
+        default:
+            return .accentColor
+        }
+    }
+    
+    // Effetti speciali per il pulsante Stop quando attivo
+    private var isStopButton: Bool {
+        icon == "stop.fill"
+    }
+    
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 8) {
-                Image(systemName: icon)
-                    .font(.system(size: 28))
-                    .foregroundColor(isActive ? .accentColor : .primary)
+            HStack(spacing: 8) {
+                // Icona con cerchio di sfondo
+                ZStack {
+                    Circle()
+                        .fill(isActive ? buttonColor : Color.secondary.opacity(0.2))
+                        .frame(width: 32, height: 32)
+                        .scaleEffect(isActive ? 1.1 : 1.0)
+                        .animation(.easeInOut(duration: 0.2), value: isActive)
+                    
+                    // Effetto glow per il pulsante Stop attivo
+                    if isStopButton && isActive {
+                        Circle()
+                            .fill(buttonColor)
+                            .frame(width: 32, height: 32)
+                            .opacity(0.3)
+                            .scaleEffect(1.5)
+                            .blur(radius: 4)
+                            .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: isActive)
+                    }
+                    
+                    Image(systemName: icon)
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(isActive ? .white : .secondary)
+                        .symbolEffect(.pulse, isActive: isActive && isStopButton)
+                        .symbolEffect(.bounce, isActive: isActive && !isStopButton)
+                }
                 
+                // Testo
                 Text(title)
-                    .font(.caption)
-                    .foregroundColor(.primary)
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(isActive ? buttonColor : .secondary)
+                    .animation(.easeInOut(duration: 0.2), value: isActive)
             }
-            .frame(width: 90, height: 90)
-            .background(Color("CardBackground"))
-            .cornerRadius(12)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(
+                        isActive ?
+                        buttonColor.opacity(isStopButton ? 0.15 : 0.1) :
+                        Color.secondary.opacity(0.05)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(
+                                isActive ? buttonColor.opacity(isStopButton ? 0.4 : 0.3) : Color.clear,
+                                lineWidth: isStopButton && isActive ? 2 : 1
+                            )
+                            .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: isActive && isStopButton)
+                    )
+            )
+            .scaleEffect(isActive ? 1.02 : 1.0)
+            .animation(.easeInOut(duration: 0.2), value: isActive)
+            
+            // Ombra speciale per il pulsante Stop attivo
+            .shadow(
+                color: isStopButton && isActive ? buttonColor.opacity(0.4) : Color.clear,
+                radius: isStopButton && isActive ? 8 : 0,
+                x: 0,
+                y: isStopButton && isActive ? 2 : 0
+            )
+            .animation(.easeInOut(duration: 0.3), value: isActive)
         }
+        .buttonStyle(PlainButtonStyle())
+        .disabled(isStopButton && !isActive) // Disabilita Stop quando non ci sono suoni attivi
     }
 }
 
-// Sound Section Component
+// Sound Section Component - Moderna
 struct SoundSection: View {
     let title: String
     let sounds: [Sound]
@@ -219,9 +294,7 @@ struct SoundSection: View {
     }
 }
 
-// Sound Card Component
-// Sostituisci la struct SoundCard in ContentView.swift con questa versione moderna:
-
+// Sound Card Component - Moderna
 struct SoundCard: View {
     let sound: Sound
     @ObservedObject var audioManager: AudioManager
