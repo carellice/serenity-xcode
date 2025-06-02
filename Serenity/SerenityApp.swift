@@ -3,6 +3,8 @@ import AVFoundation
 
 @main
 struct SerenityApp: App {
+    @State private var showSplash = true
+    
     init() {
         // Configure audio session for background playback
         do {
@@ -15,8 +17,16 @@ struct SerenityApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .preferredColorScheme(.dark) // Force dark mode
+            if showSplash {
+                SplashScreenView()
+                    .onAppear {
+                        // Nasconde la splash screen dopo il caricamento
+                        // Il timing è gestito dalla SplashScreenView stessa
+                    }
+            } else {
+                ContentView()
+                    .preferredColorScheme(.dark) // Force dark mode
+            }
         }
     }
 }
