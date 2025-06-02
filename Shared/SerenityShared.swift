@@ -16,13 +16,15 @@ struct SerenityActivityAttributes: ActivityAttributes {
 // MARK: - App Intents
 struct StopSoundsIntent: AppIntent {
     static var title: LocalizedStringResource = "Stop All Sounds"
+    static var openAppWhenRun: Bool = true  // Cambiato a true per aprire l'app
     
     func perform() async throws -> some IntentResult {
-        // Invia notifica all'app principale
-        NotificationCenter.default.post(
-            name: .stopAllSoundsFromWidget,
-            object: nil
-        )
+        // Usa UserDefaults con App Group per comunicare
+        if let userDefaults = UserDefaults(suiteName: "group.com.tuonome.serenity") {
+            userDefaults.set(true, forKey: "shouldStopAllSounds")
+            userDefaults.set(Date().timeIntervalSince1970, forKey: "stopRequestTime")
+        }
+        
         return .result()
     }
 }

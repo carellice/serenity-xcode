@@ -68,12 +68,9 @@ struct SerenityLiveActivity: Widget {
                 }
                 
                 DynamicIslandExpandedRegion(.bottom) {
-                    Button(intent: StopSoundsIntent()) {
-                        Label("Stop All", systemImage: "stop.fill")
-                            .font(.caption)
-                            .foregroundColor(.red)
-                    }
-                    .buttonStyle(.plain)
+                    // Rimuoviamo completamente il pulsante Stop
+                    // Puoi mettere qui altre informazioni se vuoi, o lasciare vuoto
+                    EmptyView()
                 }
             } compactLeading: {
                 Image(systemName: "moon.zzz.fill")
@@ -114,12 +111,6 @@ struct LockScreenView: View {
             
             if let endTime = context.state.timerEndTime {
                 TimerView(endTime: endTime)
-                    .padding(.trailing)
-            }
-            
-            Button(intent: StopSoundsIntent()) {
-                Image(systemName: "stop.circle.fill")
-                    .font(.title2)
             }
         }
         .padding()
