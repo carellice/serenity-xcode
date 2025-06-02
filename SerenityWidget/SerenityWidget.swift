@@ -27,7 +27,7 @@ struct SerenityLiveActivity: Widget {
                         Spacer()
                         Label("Serenity", systemImage: "moon.zzz.fill")
                             .font(.caption)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.white)
                         Spacer()
                     }
                     .frame(maxHeight: .infinity)
@@ -68,14 +68,12 @@ struct SerenityLiveActivity: Widget {
                 }
                 
                 DynamicIslandExpandedRegion(.bottom) {
-                    // Rimuoviamo completamente il pulsante Stop
-                    // Puoi mettere qui altre informazioni se vuoi, o lasciare vuoto
                     EmptyView()
                 }
             } compactLeading: {
                 Image(systemName: "moon.zzz.fill")
                     .font(.caption)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.white)
             } compactTrailing: {
                 Image(systemName: context.state.isPlaying ? "speaker.wave.2.fill" : "speaker.slash.fill")
                     .font(.caption)
@@ -83,9 +81,9 @@ struct SerenityLiveActivity: Widget {
             } minimal: {
                 Image(systemName: "moon.zzz.fill")
                     .font(.caption)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.white)
             }
-            .keylineTint(Color.blue)
+            .keylineTint(Color.white.opacity(0.7))
         }
     }
 }
@@ -99,11 +97,12 @@ struct LockScreenView: View {
             VStack(alignment: .leading) {
                 Label("Serenity", systemImage: "moon.zzz.fill")
                     .font(.headline)
+                    .foregroundColor(.white)
                 
                 if !context.state.activeSounds.isEmpty {
                     Text(context.state.activeSounds.joined(separator: " • "))
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.white.opacity(0.8))
                 }
             }
             
