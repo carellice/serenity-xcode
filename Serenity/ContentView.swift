@@ -5,8 +5,17 @@ struct ContentView: View {
     @StateObject private var audioManager = AudioManager()
     @State private var showingTimerSheet = false
     @State private var isLocked = false
+    @State private var showOnboarding = !UserDefaults.standard.bool(forKey: "hasSeenOnboarding")
     
     var body: some View {
+        if showOnboarding {
+            OnboardingView()
+        } else {
+            mainAppView
+        }
+    }
+    
+    private var mainAppView: some View {
         NavigationView {
             ZStack {
                 // Background
