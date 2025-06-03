@@ -98,6 +98,7 @@ struct ContentView: View {
                 TimerView(audioManager: audioManager)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle()) // Forza stile iPhone anche su iPad
     }
 }
 
@@ -205,7 +206,7 @@ struct SoundSection: View {
     let isLocked: Bool
     
     let columns = [
-        GridItem(.adaptive(minimum: 110))
+        GridItem(.adaptive(minimum: UIDevice.current.userInterfaceIdiom == .pad ? 140 : 110))
     ]
     
     // Colore della categoria basato sul primo suono
@@ -405,7 +406,8 @@ struct SoundCard: View {
                 .padding(.vertical, 16)
                 .padding(.horizontal, 12)
             }
-            .frame(width: 110, height: 130)
+            .frame(width: UIDevice.current.userInterfaceIdiom == .pad ? 140 : 110,
+                   height: UIDevice.current.userInterfaceIdiom == .pad ? 160 : 130)
             .scaleEffect(isPressed ? 0.96 : 1.0)
             .animation(.easeInOut(duration: 0.1), value: isPressed)
             

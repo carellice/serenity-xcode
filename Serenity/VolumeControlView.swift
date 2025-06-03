@@ -148,6 +148,7 @@ struct VolumeControlView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle()) // Forza stile iPhone anche su iPad
     }
 }
 
