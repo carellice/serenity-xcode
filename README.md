@@ -15,10 +15,10 @@ Serenity è un'applicazione iOS nativa sviluppata in SwiftUI che ti aiuta a rila
 ## 📸 Screenshot
 
 <p align="center">
-  <img src="screenshots/home.png" alt="Home Screen" width="230">
-  <img src="screenshots/volume.png" alt="Volume Control" width="230">
-  <img src="screenshots/timer.png" alt="Timer" width="230">
-  <img src="screenshots/splash.png" alt="Splash Screen" width="230">
+  <img src="https://raw.githubusercontent.com/carellice/serenity-xcode/refs/heads/main/screenshots/iPhone/App%20Store/English%20%5Ben%5D%20%7C%20iPhone%20-%206.9%22%20Display%20-%201%20%7C%202025-06-03_10-47-25.jpeg" alt="Home Screen" width="230">
+  <img src="https://raw.githubusercontent.com/carellice/serenity-xcode/refs/heads/main/screenshots/iPhone/App%20Store/English%20%5Ben%5D%20%7C%20iPhone%20-%206.9%22%20Display%20-%202%20%7C%202025-06-03_10-47-25.jpeg" alt="Volume Control" width="230">
+  <img src="https://github.com/carellice/serenity-xcode/blob/main/screenshots/iPhone/App%20Store/English%20%5Ben%5D%20%7C%20iPhone%20-%206.9%22%20Display%20-%203%20%7C%202025-06-03_10-47-25.jpeg?raw=true" alt="Timer" width="230">
+  <img src="https://github.com/carellice/serenity-xcode/blob/main/screenshots/iPhone/App%20Store/English%20%5Ben%5D%20%7C%20iPhone%20-%206.9%22%20Display%20-%204%20%7C%202025-06-03_10-47-25.jpeg?raw=true" alt="Splash Screen" width="230">
 </p>
 
 ---
