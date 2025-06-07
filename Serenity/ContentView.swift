@@ -18,81 +18,99 @@ struct ContentView: View {
     private var mainAppView: some View {
         NavigationView {
             ZStack {
-                // Background
-                Color("BackgroundColor")
-                    .ignoresSafeArea()
+                // Background gradiente
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        Color.black,
+                        Color("BackgroundColor"),
+                        Color.black.opacity(0.9)
+                    ]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
                 
-                VStack(spacing: 20) {
-                    // Control Buttons - Stile moderno
-                    HStack(spacing: 16) {
-                        // Stop button - intelligente
-                        ControlButton(
-                            icon: "stop.fill",
-                            title: "Stop",
-                            isActive: audioManager.activeSounds.values.contains(true), // Attivo se ci sono suoni
-                            action: {
-                                audioManager.stopAllSounds()
-                            }
-                        )
-                        
-                        ControlButton(
-                            icon: "clock.fill",
-                            title: "Timer",
-                            isActive: audioManager.timerActive,
-                            action: {
-                                showingTimerSheet = true
-                            }
-                        )
-                        
-                        ControlButton(
-                            icon: isLocked ? "lock.fill" : "lock.open.fill",
-                            title: isLocked ? "Bloccato" : "Blocca",
-                            isActive: isLocked,
-                            action: {
-                                withAnimation(.easeInOut(duration: 0.3)) {
-                                    isLocked.toggle()
+                VStack(spacing: 0) {
+                    // Control Buttons Section
+                    VStack(spacing: 16) {
+                        HStack(spacing: 12) {
+                            ControlButton(
+                                icon: "stop.fill",
+                                title: "Stop",
+                                isActive: audioManager.activeSounds.values.contains(true),
+                                action: {
+                                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                                        audioManager.stopAllSounds()
+                                    }
                                 }
-                            }
-                        )
+                            )
+                            
+                            ControlButton(
+                                icon: "clock.fill",
+                                title: "Timer",
+                                isActive: audioManager.timerActive,
+                                action: {
+                                    showingTimerSheet = true
+                                }
+                            )
+                            
+                            ControlButton(
+                                icon: isLocked ? "lock.fill" : "lock.open.fill",
+                                title: isLocked ? "Bloccato" : "Blocca",
+                                isActive: isLocked,
+                                action: {
+                                    withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+                                        isLocked.toggle()
+                                    }
+                                }
+                            )
+                        }
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 60)
                     .padding(.top, 8)
+                    .padding(.bottom, 16)
                     
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 25) {
+                    // Main Content
+                    ScrollView(showsIndicators: false) {
+                        LazyVStack(spacing: 32) {
                             // Anti Sounds Section
-                            SoundSection(
+                            SoundSectionView(
                                 title: "Anti Suoni",
                                 sounds: audioManager.antiSounds,
                                 audioManager: audioManager,
-                                isLocked: isLocked
+                                isLocked: isLocked,
+                                categoryColor: .purple
                             )
                             
                             // Nature Section
-                            SoundSection(
+                            SoundSectionView(
                                 title: "Natura",
                                 sounds: audioManager.natureSounds,
                                 audioManager: audioManager,
-                                isLocked: isLocked
+                                isLocked: isLocked,
+                                categoryColor: .green
                             )
                             
                             // Travel Section
-                            SoundSection(
+                            SoundSectionView(
                                 title: "Viaggio",
                                 sounds: audioManager.travelSounds,
                                 audioManager: audioManager,
-                                isLocked: isLocked
+                                isLocked: isLocked,
+                                categoryColor: .blue
                             )
                             
                             // Other Section
-                            SoundSection(
+                            SoundSectionView(
                                 title: "Altro",
                                 sounds: audioManager.otherSounds,
                                 audioManager: audioManager,
-                                isLocked: isLocked
+                                isLocked: isLocked,
+                                categoryColor: .orange
                             )
                         }
-                        .padding()
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 100)
                     }
                 }
                 
@@ -107,18 +125,18 @@ struct ContentView: View {
                 TimerView(audioManager: audioManager)
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle()) // Forza stile iPhone anche su iPad
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
-// Control Button Component - Moderno
+// MARK: - Control Button Component
 struct ControlButton: View {
     let icon: String
     let title: String
     let isActive: Bool
     let action: () -> Void
+    @State private var isPressed = false
     
-    // Colori personalizzati per ogni tipo di pulsante
     private var buttonColor: Color {
         switch icon {
         case "stop.fill":
@@ -132,191 +150,154 @@ struct ControlButton: View {
         }
     }
     
-    // Effetti speciali per il pulsante Stop quando attivo
-    private var isStopButton: Bool {
-        icon == "stop.fill"
-    }
-    
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 8) {
-                // Icona con cerchio di sfondo
-                ZStack {
+            ZStack {
+                // Glow effect per stop button attivo
+                if icon == "stop.fill" && isActive {
                     Circle()
-                        .fill(isActive ? buttonColor : Color.secondary.opacity(0.2))
-                        .frame(width: 32, height: 32)
-                        .scaleEffect(isActive ? 1.1 : 1.0)
-                        .animation(.easeInOut(duration: 0.2), value: isActive)
-                    
-                    // Effetto glow per il pulsante Stop attivo
-                    if isStopButton && isActive {
-                        Circle()
-                            .fill(buttonColor)
-                            .frame(width: 32, height: 32)
-                            .opacity(0.3)
-                            .scaleEffect(1.5)
-                            .blur(radius: 4)
-                            .animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: isActive)
-                    }
-                    
-                    Image(systemName: icon)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(isActive ? .white : .secondary)
-                        .symbolEffect(.pulse, isActive: isActive && isStopButton)
-                        .symbolEffect(.bounce, isActive: isActive && !isStopButton)
+                        .fill(buttonColor.opacity(0.4))
+                        .frame(width: 44, height: 44)
+                        .blur(radius: 8)
+                        .scaleEffect(isPressed ? 1.2 : 1.1)
                 }
                 
-                // Testo
-                Text(title)
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(isActive ? buttonColor : .secondary)
-                    .animation(.easeInOut(duration: 0.2), value: isActive)
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(
-                        isActive ?
-                        buttonColor.opacity(isStopButton ? 0.15 : 0.1) :
-                        Color.secondary.opacity(0.05)
-                    )
+                Circle()
+                    .fill(isActive ? buttonColor : Color.white.opacity(0.1))
+                    .frame(width: 40, height: 40)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(
-                                isActive ? buttonColor.opacity(isStopButton ? 0.4 : 0.3) : Color.clear,
-                                lineWidth: isStopButton && isActive ? 2 : 1
-                            )
-                            .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: isActive && isStopButton)
+                        Circle()
+                            .stroke(isActive ? buttonColor.opacity(0.5) : Color.white.opacity(0.2), lineWidth: 1)
                     )
-            )
-            .scaleEffect(isActive ? 1.02 : 1.0)
+                
+                Image(systemName: icon)
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(isActive ? .white : .secondary)
+                    .symbolEffect(.pulse, isActive: isActive && icon == "stop.fill")
+            }
+            .scaleEffect(isPressed ? 0.9 : 1.0)
+            .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
             .animation(.easeInOut(duration: 0.2), value: isActive)
-            
-            // Ombra speciale per il pulsante Stop attivo
-            .shadow(
-                color: isStopButton && isActive ? buttonColor.opacity(0.4) : Color.clear,
-                radius: isStopButton && isActive ? 8 : 0,
-                x: 0,
-                y: isStopButton && isActive ? 2 : 0
-            )
-            .animation(.easeInOut(duration: 0.3), value: isActive)
         }
         .buttonStyle(PlainButtonStyle())
-        .disabled(isStopButton && !isActive) // Disabilita Stop quando non ci sono suoni attivi
+        .disabled((icon == "stop.fill") && !isActive)
+        .onLongPressGesture(minimumDuration: 0) {
+        } onPressingChanged: { pressing in
+            isPressed = pressing
+        }
     }
 }
 
-// Sound Section Component - Moderna
-struct SoundSection: View {
+// MARK: - Sound Section View
+struct SoundSectionView: View {
     let title: String
     let sounds: [Sound]
-    let audioManager: AudioManager
+    @ObservedObject var audioManager: AudioManager
     let isLocked: Bool
+    let categoryColor: Color
     
-    let columns = [
-        GridItem(.adaptive(minimum: UIDevice.current.userInterfaceIdiom == .pad ? 140 : 110))
+    private var activeSoundsCount: Int {
+        sounds.filter { audioManager.activeSounds[$0.id] == true }.count
+    }
+    
+    private let columns = [
+        GridItem(.adaptive(minimum: 140, maximum: 160), spacing: 16)
     ]
     
-    // Colore della categoria basato sul primo suono
-    private var categoryColor: Color {
-        guard let firstSound = sounds.first else { return .accentColor }
-        return Color.colorForCategory(firstSound.category)
-    }
-    
-    // Conta i suoni attivi in questa sezione
-    private var activeSoundsCount: Int {
-        sounds.filter { sound in
-            audioManager.activeSounds[sound.id] == true
-        }.count
-    }
-    
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            // Header della sezione migliorato
+        VStack(spacing: 20) {
+            // Section Header
             HStack {
-                HStack(spacing: 12) {
-                    // Indicatore colorato della categoria
-                    RoundedRectangle(cornerRadius: 3)
-                        .fill(categoryColor)
-                        .frame(width: 4, height: 24)
-                    
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(title)
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.primary)
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: 12) {
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(categoryColor)
+                            .frame(width: 4, height: 28)
                         
-                        if activeSoundsCount > 0 {
+                        Text(title)
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
+                            .foregroundColor(.white)
+                    }
+                    
+                    if activeSoundsCount > 0 {
+                        HStack(spacing: 6) {
+                            Circle()
+                                .fill(categoryColor)
+                                .frame(width: 6, height: 6)
+                            
                             Text("\(activeSoundsCount) attiv\(activeSoundsCount == 1 ? "o" : "i")")
-                                .font(.caption)
+                                .font(.system(size: 13, weight: .medium))
                                 .foregroundColor(categoryColor)
-                                .fontWeight(.medium)
                         }
+                        .padding(.leading, 16)
                     }
                 }
                 
                 Spacer()
                 
-                // Pulsante per fermare tutti i suoni della sezione
                 if activeSoundsCount > 0 {
                     Button(action: {
-                        // Ferma tutti i suoni di questa sezione
-                        for sound in sounds {
-                            if audioManager.activeSounds[sound.id] == true {
-                                audioManager.setVolume(for: sound, volume: 0)
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.8)) {
+                            for sound in sounds {
+                                if audioManager.activeSounds[sound.id] == true {
+                                    audioManager.setVolume(for: sound, volume: 0)
+                                }
                             }
                         }
                     }) {
-                        HStack(spacing: 4) {
-                            Image(systemName: "stop.fill")
-                                .font(.caption)
+                        HStack(spacing: 6) {
+                            Image(systemName: "stop.circle.fill")
+                                .font(.system(size: 14))
                             Text("Stop")
-                                .font(.caption)
-                                .fontWeight(.medium)
+                                .font(.system(size: 14, weight: .semibold))
                         }
                         .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
+                        .padding(.vertical, 8)
                         .background(
-                            RoundedRectangle(cornerRadius: 8)
+                            Capsule()
                                 .fill(Color.red.opacity(0.2))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(Color.red.opacity(0.4), lineWidth: 1)
+                                )
                         )
                         .foregroundColor(.red)
                     }
                     .transition(.scale.combined(with: .opacity))
-                    .animation(.easeInOut(duration: 0.2), value: activeSoundsCount)
                 }
             }
-            .padding(.horizontal, 4)
             
-            // Griglia dei suoni
-            LazyVGrid(columns: columns, spacing: 15) {
+            // Sound Grid
+            LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(sounds) { sound in
-                    SoundCard(
+                    SoundCardView(
                         sound: sound,
                         audioManager: audioManager,
-                        isLocked: isLocked
+                        isLocked: isLocked,
+                        categoryColor: categoryColor
                     )
                 }
             }
         }
-        .padding(.vertical, 8)
     }
 }
 
-// Sound Card Component - Moderna
-struct SoundCard: View {
+// MARK: - Sound Card View
+struct SoundCardView: View {
     let sound: Sound
     @ObservedObject var audioManager: AudioManager
     let isLocked: Bool
+    let categoryColor: Color
+    
     @State private var showingVolumeControl = false
     @State private var isPressed = false
+    @State private var glowAnimation = false
     
-    var isActive: Bool {
+    private var isActive: Bool {
         audioManager.activeSounds[sound.id] ?? false
     }
     
-    var currentVolume: Float {
+    private var currentVolume: Float {
         audioManager.getVolume(for: sound)
     }
     
@@ -327,123 +308,251 @@ struct SoundCard: View {
             }
         }) {
             ZStack {
-                // Sfondo con gradiente
-                RoundedRectangle(cornerRadius: 16)
+                // Background glow for active sounds
+                if isActive {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(categoryColor.opacity(0.3))
+                        .blur(radius: 15)
+                        .scaleEffect(glowAnimation ? 1.1 : 1.0)
+                        .opacity(glowAnimation ? 0.8 : 0.4)
+                        .animation(.easeInOut(duration: 2.0).repeatForever(autoreverses: true), value: glowAnimation)
+                }
+                
+                // Main card
+                RoundedRectangle(cornerRadius: 20)
                     .fill(
                         LinearGradient(
                             gradient: Gradient(colors: isActive ? [
-                                Color.accentColor.opacity(0.3),
-                                Color.accentColor.opacity(0.1)
+                                categoryColor.opacity(0.4),
+                                categoryColor.opacity(0.2),
+                                Color.white.opacity(0.1)
                             ] : [
-                                Color("CardBackground"),
-                                Color("CardBackground").opacity(0.8)
+                                Color.white.opacity(0.1),
+                                Color.white.opacity(0.05),
+                                Color.clear
                             ]),
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
                     )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [
+                                        Color.white.opacity(isActive ? 0.3 : 0.1),
+                                        Color.clear,
+                                        Color.white.opacity(isActive ? 0.1 : 0.05)
+                                    ]),
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                lineWidth: 1
+                            )
+                    )
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20))
                 
-                // Bordo luminoso per suoni attivi
-                if isActive {
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color.accentColor.opacity(0.8),
-                                    Color.accentColor.opacity(0.4)
-                                ]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 2
-                        )
-                }
-                
-                VStack(spacing: 12) {
-                    // Icona con effetti
+                // Content
+                VStack(spacing: 16) {
+                    // Icon section
                     ZStack {
-                        // Cerchio di sfondo per l'icona
+                        // Icon background
                         Circle()
-                            .fill(isActive ? Color.accentColor.opacity(0.2) : Color.clear)
-                            .frame(width: 50, height: 50)
+                            .fill(isActive ? categoryColor.opacity(0.2) : Color.white.opacity(0.1))
+                            .frame(width: 60, height: 60)
                             .scaleEffect(isActive ? 1.1 : 1.0)
-                            .animation(.easeInOut(duration: 0.3), value: isActive)
+                        
+                        // Ripple effect for active sounds
+                        if isActive {
+                            ForEach(0..<2, id: \.self) { index in
+                                Circle()
+                                    .stroke(categoryColor.opacity(0.4), lineWidth: 2)
+                                    .frame(width: 60 + CGFloat(index) * 20)
+                                    .scaleEffect(glowAnimation ? 1.3 : 1.0)
+                                    .opacity(glowAnimation ? 0.0 : 0.8)
+                                    .animation(
+                                        .easeOut(duration: 1.5)
+                                        .repeatForever(autoreverses: false)
+                                        .delay(Double(index) * 0.5),
+                                        value: glowAnimation
+                                    )
+                            }
+                        }
                         
                         Image(systemName: sound.icon)
                             .font(.system(size: 28, weight: .light))
-                            .foregroundColor(isActive ? .accentColor : .secondary)
-                            .symbolEffect(.pulse, isActive: isActive)
-                            .scaleEffect(isPressed ? 0.95 : 1.0)
-                            .animation(.easeInOut(duration: 0.1), value: isPressed)
+                            .foregroundColor(isActive ? categoryColor : .secondary)
+                            .symbolEffect(.pulse.byLayer, isActive: isActive)
                     }
                     
-                    // Nome del suono
-                    Text(sound.name)
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .foregroundColor(.primary)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
-                    
-                    // Indicatore di volume per suoni attivi
-                    if isActive {
-                        VStack(spacing: 4) {
-                            // Barra di volume mini
-                            HStack(spacing: 2) {
-                                ForEach(0..<5) { index in
-                                    RoundedRectangle(cornerRadius: 1)
-                                        .fill(Color.accentColor)
-                                        .frame(width: 3, height: CGFloat(4 + index * 2))
-                                        .opacity(currentVolume > Float(index) * 0.2 ? 1.0 : 0.3)
-                                        .animation(.easeInOut(duration: 0.2), value: currentVolume)
+                    // Text section
+                    VStack(spacing: 8) {
+                        Text(sound.name)
+                            .font(.system(size: 14, weight: .semibold, design: .rounded))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                        
+                        if isActive {
+                            // Volume indicator
+                            VStack(spacing: 4) {
+                                // Volume bar
+                                GeometryReader { geometry in
+                                    ZStack(alignment: .leading) {
+                                        RoundedRectangle(cornerRadius: 2)
+                                            .fill(Color.white.opacity(0.2))
+                                            .frame(height: 3)
+                                        
+                                        RoundedRectangle(cornerRadius: 2)
+                                            .fill(categoryColor)
+                                            .frame(
+                                                width: geometry.size.width * CGFloat(currentVolume),
+                                                height: 3
+                                            )
+                                            .animation(.easeInOut(duration: 0.2), value: currentVolume)
+                                    }
                                 }
+                                .frame(height: 3)
+                                
+                                Text("\(Int(currentVolume * 100))%")
+                                    .font(.system(size: 10, weight: .bold, design: .rounded))
+                                    .foregroundColor(categoryColor)
+                                    .padding(.horizontal, 6)
+                                    .padding(.vertical, 2)
+                                    .background(
+                                        Capsule()
+                                            .fill(categoryColor.opacity(0.2))
+                                    )
                             }
-                            .frame(height: 12)
-                            
-                            // Percentuale volume
-                            Text("\(Int(currentVolume * 100))%")
-                                .font(.system(size: 10, weight: .medium, design: .rounded))
-                                .foregroundColor(.accentColor)
+                        } else {
+                            Text("Tocca per riprodurre")
+                                .font(.system(size: 11, weight: .medium))
+                                .foregroundColor(.secondary)
                         }
-                    } else {
-                        // Indicatore inattivo
-                        Circle()
-                            .fill(Color.secondary.opacity(0.3))
-                            .frame(width: 6, height: 6)
                     }
                 }
-                .padding(.vertical, 16)
-                .padding(.horizontal, 12)
+                .padding(.vertical, 20)
+                .padding(.horizontal, 16)
             }
-            .frame(width: UIDevice.current.userInterfaceIdiom == .pad ? 140 : 110,
-                   height: UIDevice.current.userInterfaceIdiom == .pad ? 160 : 130)
-            .scaleEffect(isPressed ? 0.96 : 1.0)
-            .animation(.easeInOut(duration: 0.1), value: isPressed)
-            
-            // Effetto glow per suoni attivi
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.accentColor)
-                    .opacity(isActive ? 0.1 : 0)
-                    .blur(radius: 8)
-                    .scaleEffect(1.1)
-                    .animation(.easeInOut(duration: 0.3), value: isActive)
+            .frame(height: 160)
+            .scaleEffect(isPressed ? 0.95 : 1.0)
+            .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isPressed)
+        }
+        .buttonStyle(PlainButtonStyle())
+        .disabled(isLocked)
+        .contextMenu {
+            SoundContextMenu(
+                sound: sound,
+                audioManager: audioManager,
+                isActive: isActive,
+                categoryColor: categoryColor
             )
         }
-        .disabled(isLocked)
-        .buttonStyle(PlainButtonStyle())
-        .onLongPressGesture(minimumDuration: 0.0) {
-            // Questo non viene mai chiamato, ma permette di avere onChanged
+        .onLongPressGesture(minimumDuration: 0) {
         } onPressingChanged: { pressing in
             isPressed = pressing
         }
         .sheet(isPresented: $showingVolumeControl) {
             VolumeControlView(sound: sound, audioManager: audioManager)
         }
+        .onAppear {
+            if isActive {
+                glowAnimation = true
+            }
+        }
+        .onChange(of: isActive) { newValue in
+            withAnimation(.easeInOut(duration: 0.3)) {
+                glowAnimation = newValue
+            }
+        }
     }
 }
 
-// Lock Overlay
+// MARK: - Sound Context Menu
+struct SoundContextMenu: View {
+    let sound: Sound
+    @ObservedObject var audioManager: AudioManager
+    let isActive: Bool
+    let categoryColor: Color
+    
+    var body: some View {
+        VStack {
+            // Header
+            Label(sound.name, systemImage: sound.icon)
+                .foregroundColor(categoryColor)
+                .fontWeight(.semibold)
+            
+            Divider()
+            
+            if isActive {
+                // Stop option
+                Button(action: {
+                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                        audioManager.setVolume(for: sound, volume: 0)
+                    }
+                }) {
+                    Label("Ferma", systemImage: "stop.fill")
+                        .foregroundColor(.red)
+                }
+                
+                // Volume options
+                Button(action: {
+                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                        audioManager.setVolume(for: sound, volume: 0.25)
+                    }
+                }) {
+                    Label("Volume 25%", systemImage: "speaker.wave.1.fill")
+                }
+                
+                Button(action: {
+                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                        audioManager.setVolume(for: sound, volume: 0.5)
+                    }
+                }) {
+                    Label("Volume 50%", systemImage: "speaker.wave.2.fill")
+                }
+                
+                Button(action: {
+                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                        audioManager.setVolume(for: sound, volume: 1.0)
+                    }
+                }) {
+                    Label("Volume 100%", systemImage: "speaker.wave.3.fill")
+                }
+            } else {
+                // Start options
+                Button(action: {
+                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                        audioManager.setVolume(for: sound, volume: 0.25)
+                    }
+                }) {
+                    Label("Avvia - Volume Basso", systemImage: "play.fill")
+                        .foregroundColor(categoryColor)
+                }
+                
+                Button(action: {
+                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                        audioManager.setVolume(for: sound, volume: 0.5)
+                    }
+                }) {
+                    Label("Avvia - Volume Medio", systemImage: "play.fill")
+                        .foregroundColor(categoryColor)
+                }
+                
+                Button(action: {
+                    withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                        audioManager.setVolume(for: sound, volume: 1.0)
+                    }
+                }) {
+                    Label("Avvia - Volume Alto", systemImage: "play.fill")
+                        .foregroundColor(categoryColor)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Lock Overlay
 struct LockOverlay: View {
     @Binding var isLocked: Bool
     @State private var position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
@@ -452,41 +561,62 @@ struct LockOverlay: View {
     
     var body: some View {
         ZStack {
-            Color.black.opacity(0.9)
+            Color.black.opacity(0.95)
                 .ignoresSafeArea()
                 .onTapGesture {
-                    // Previene tap accidentali
+                    // Prevent accidental taps
                 }
             
-            VStack(spacing: 20) {
-                Image(systemName: "lock.fill")
-                    .font(.system(size: 48))
-                    .foregroundColor(.white)
-                
-                Text("Schermo bloccato")
-                    .font(.title3)
-                    .foregroundColor(.white)
-                
-                Button("Sblocca") {
-                    isLocked = false
+            VStack(spacing: 24) {
+                ZStack {
+                    Circle()
+                        .fill(Color.white.opacity(0.1))
+                        .frame(width: 80, height: 80)
+                        .blur(radius: 20)
+                    
+                    Image(systemName: "lock.fill")
+                        .font(.system(size: 40, weight: .light))
+                        .foregroundColor(.white)
                 }
-                .padding(.horizontal, 30)
-                .padding(.vertical, 10)
-                .background(Color.accentColor)
-                .foregroundColor(.white)
-                .cornerRadius(8)
+                
+                VStack(spacing: 8) {
+                    Text("Schermo Bloccato")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                    
+                    Text("Tocca per sbloccare e continuare")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                
+                Button(action: {
+                    withAnimation(.spring(response: 0.5, dampingFraction: 0.8)) {
+                        isLocked = false
+                    }
+                }) {
+                    Text("Sblocca")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 32)
+                        .padding(.vertical, 12)
+                        .background(
+                            Capsule()
+                                .fill(Color.white)
+                        )
+                }
             }
             .position(position)
             .onReceive(timer) { _ in
-                withAnimation(.easeInOut(duration: 0.5)) {
+                withAnimation(.easeInOut(duration: 0.8)) {
                     position = randomPosition()
                 }
             }
         }
     }
     
-    func randomPosition() -> CGPoint {
-        let padding: CGFloat = 100
+    private func randomPosition() -> CGPoint {
+        let padding: CGFloat = 120
         let screenWidth = UIScreen.main.bounds.width
         let screenHeight = UIScreen.main.bounds.height
         
